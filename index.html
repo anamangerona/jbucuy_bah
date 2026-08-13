@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Racismo Estrutural</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+    <main class="quiz-container">
+        <div class="cabecalho">
+            <h1>Quiz: Racismo Estrutural</h1>
+            <p>Teste seus conhecimentos sobre racismo estrutural e reflita sobre o tema.</p>
+        </div>
+
+        <form id="quizForm">
+
+            <div class="questao">
+                <h2>1. O que é racismo estrutural?</h2>
+
+                <label>
+                    <input type="radio" name="q1" value="a">
+                    (A) Apenas atitudes individuais de preconceito.
+                </label>
+
+                <label>
+                    <input type="radio" name="q1" value="b">
+                    (B) Um problema presente nas estruturas e instituições da sociedade.
+                </label>
+
+                <label>
+                    <input type="radio" name="q1" value="c">
+                    (C) Uma forma de brincadeira entre pessoas.
+                </label>
+
+                <label>
+                    <input type="radio" name="q1" value="d">
+                    (D) Um problema que existe somente nas escolas.
+                </label>
+            </div>
+
+            <div class="questao">
+                <h2>2. O racismo estrutural pode afetar:</h2>
+
+                <label>
+                    <input type="radio" name="q2" value="a">
+                    (A) Apenas a vida familiar.
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="b">
+                    (B) Somente pessoas famosas.
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="c">
+                    (C) Acesso à educação, trabalho, renda e outros espaços sociais.
+                </label>
+
+                <label>
+                    <input type="radio" name="q2" value="d">
+                    (D) Apenas situações esportivas.
+                </label>
+            </div>
+
+            <div class="questao">
+                <h2>3. Qual é uma forma de combater o racismo?</h2>
+
+                <label>
+                    <input type="radio" name="q3" value="a">
+                    (A) Ignorar situações de discriminação.
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="b">
+                    (B) Evitar conversar sobre o assunto.
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="c">
+                    (C) Combater preconceitos e promover igualdade e respeito.
+                </label>
+
+                <label>
+                    <input type="radio" name="q3" value="d">
+                    (D) Tratar o racismo como uma brincadeira.
+                </label>
+            </div>
+
+            <div class="questao">
+                <h2>4. Por que é importante falar sobre racismo?</h2>
+
+                <label>
+                    <input type="radio" name="q4" value="a">
+                   (A) Para aumentar os conflitos.
+                </label>
+
+                <label>
+                    <input type="radio" name="q4" value="b">
+                    (B) Para compreender o problema e buscar formas de combatê-lo.
+                </label>
+
+                <label>
+                    <input type="radio" name="q4" value="c">
+                    <span>
+                        (C) Para fingir que o problema não existe.</span>
+                </label>
+
+                <label>
+                    <input type="radio" name="q4" value="d">
+                   (D) Para separar as pessoas.
+                </label>
+            </div>
+
+            <div class="questao">
+                <h2>5. O racismo estrutural é um problema:</h2>
+
+                <label>
+                    <input type="radio" name="q5" value="a">
+                    (A) Somente individual.
+                </label>
+
+                <label>
+                    <input type="radio" name="q5" value="b">
+                    (B) Que pode estar relacionado ao funcionamento histórico e social das instituições.
+                </label>
+
+                <label>
+                    <input type="radio" name="q5" value="c">
+                    (C) Que não pode ser combatido.
+                </label>
+
+                <label>
+                    <input type="radio" name="q5" value="d">
+                    (D) Que existe somente em um país.
+                </label>
+            </div>
+
+            <button type="button" onclick="corrigirQuiz()">
+                Finalizar Quiz
+            </button>
+
+        </form>
+
+        <section id="resultado" class="resultado"></section>
+
+    </main>
+
+    <script>
+        function corrigirQuiz() {
+
+            const respostas = {
+                q1: "b",
+                q2: "c",
+                q3: "c",
+                q4: "b",
+                q5: "b"
+            };
+
+            let pontos = 0;
+
+            for (let questao in respostas) {
+                const resposta = document.querySelector(
+                    `input[name="${questao}"]:checked`
+                );
+
+                if (resposta && resposta.value === respostas[questao]) {
+                    pontos++;
+                }
+            }
+
+            const resultado = document.getElementById("resultado");
+
+            let mensagem = "";
+
+            if (pontos === 5) {
+                mensagem = `
+                    <h2>Parabéns! Você acertou ${pontos}/5!</h2>
+                    <p>
+                        Você demonstrou ter uma boa compreensão sobre o racismo
+                        estrutural e a importância de combatê-lo.
+                    </p>
+                `;
+            } else if (pontos >= 3) {
+                mensagem = `
+                    <h2>Bom trabalho! Você acertou ${pontos}/5.</h2>
+                    <p>
+                        Você já possui conhecimentos importantes sobre o tema,
+                        mas ainda pode aprender mais.
+                    </p>
+                `;
+            } else {
+                mensagem = `
+                    <h2>Você acertou ${pontos}/5.</h2>
+                    <p>
+                        Esse resultado é uma oportunidade para aprender mais
+                        sobre racismo estrutural e seus impactos na sociedade.
+                    </p>
+                `;
+            }
+
+            mensagem += `
+                <div class="texto-final">
+                    <h3>Por que esse assunto é importante?</h3>
+
+                    <p>
+                        O racismo estrutural está relacionado à maneira como
+                        desigualdades raciais podem estar presentes nas
+                        instituições, nas relações sociais e nas oportunidades
+                        disponíveis para diferentes grupos.
+                    </p>
+
+                    <p>
+                        Combater o racismo exige informação, respeito e atitudes
+                        que contribuam para uma sociedade mais justa e igualitária.
+                        Aprender sobre o assunto é um dos primeiros passos para
+                        reconhecer desigualdades e ajudar a combatê-las.
+                    </p>
+
+
+
+                    <strong>
+                        Respeito, igualdade e educação são importantes para
+                        construir uma sociedade sem racismo.
+                    </strong>
+                </div>
+            `;
+
+            resultado.innerHTML = mensagem;
+            resultado.style.display = "block";
+
+            resultado.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    </script>
+
+
+<img src="racismo.jpg" alt="Uma pessoa carregando a mensagem 'chega de racismo'">
+
+
+</body>
+</html>
+
+style.css
+
